@@ -4,14 +4,18 @@ from django.core.exceptions import ValidationError
 
 
 class RegisterUserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input'}))
+    password2 = forms.CharField(label="Repeat password", widget=forms.PasswordInput(attrs={'class': 'input'}))
 
     class Meta:
         model = User
         fields = ['username', 'email']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'input'}),
+            'email':    forms.EmailInput(attrs={'class': 'input'})
+        }
 
-    #Validating password
+    # Validating password
     def clean_password2(self):
         cd = self.cleaned_data
         if cd['password2'] != cd['password']:
