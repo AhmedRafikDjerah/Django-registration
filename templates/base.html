@@ -12,20 +12,27 @@
         <a href="/" class="navbar-item">
             <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
         </a>
-    </div>
-    <a href="/" class="navbar-item">Home</a>
-
-    <div class="navbar-end">
-        <div class="navbar-item">
-            <div class="field is-grouped">
-                <p class="control">
-                    <a href="{% url 'register' %}" class="button is-primary">
-                        <span>SIGN UP</span>
-                    </a>
-                </p>
-            </div>
+        <div class="navbar-burger burger" data-target="nav-data">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
+        <div class="navbar-menu" id="nav-data">
+            <a href="/" class="navbar-item">Home</a>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a href="{% url 'register' %}" class="button is-primary">
+                                <span>SIGN UP</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+        </div>
+    </div>
+
 </nav>
 {% block heading %}  {% endblock %}
 

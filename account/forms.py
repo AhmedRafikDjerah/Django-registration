@@ -12,8 +12,8 @@ class RegisterUserForm(forms.ModelForm):
         model = User
         fields = ['username', 'email']
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'input'}),
-            'email':    forms.EmailInput(attrs={'class': 'input'})
+            'username': forms.TextInput(attrs={'class': 'input', 'autofocus': True}),
+            'email': forms.EmailInput(attrs={'class': 'input', 'required': True})
         }
 
     # Validating password
@@ -27,6 +27,6 @@ class RegisterUserForm(forms.ModelForm):
 
 class LoginForm(AuthenticationForm):
     username = UsernameField(
-        widget=forms.TextInput(attrs={'class': 'input', 'autofocus': True})
+        widget=forms.TextInput(attrs={'class': 'input', 'autofocus': True, 'placeholder': 'username'})
     )
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input', 'placeholder': 'password'}))

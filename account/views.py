@@ -3,9 +3,8 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-from django.http import HttpResponseForbidden, HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseForbidden, HttpResponse
 
-# Create your views here.
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, TemplateView

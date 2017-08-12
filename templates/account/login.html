@@ -7,7 +7,7 @@
     <div class="container">
         <div class="columns is-mobile">
             <div class="column is-half is-offset-one-quarter">
-                <div class="content"><h2>Register</h2></div>
+                <h3 class="title is-size-3">Login</h3>
                 <form action="{% url 'login' %}" method="post">
                     {% csrf_token %}
                     {% for non_field_error in form.non_field_errors %}
