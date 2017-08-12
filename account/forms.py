@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
@@ -22,3 +23,10 @@ class RegisterUserForm(forms.ModelForm):
             raise ValidationError("Password don't match")
 
         return cd['password2']
+
+
+class LoginForm(AuthenticationForm):
+    username = UsernameField(
+        widget=forms.TextInput(attrs={'class': 'input', 'autofocus': True})
+    )
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input'}))
