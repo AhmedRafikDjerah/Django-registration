@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth.views import SuccessURLAllowedHostsMixin, LoginView
-from django.http import HttpResponseForbidden, HttpResponse
-from django.shortcuts import render
+from django.contrib.auth.views import, LoginView
+from django.http import HttpResponseForbidden, HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView, TemplateView
+from django.views.generic import CreateView, TemplateView
 
 from account.forms import RegisterUserForm, LoginForm
 
@@ -38,3 +37,9 @@ class LoginUserView(LoginView):
 
 class DashboardView(TemplateView):
     template_name = 'account/dashboard.html'
+    
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect(reverse_lazy('login'))
+
+        return super(DashboardView, self).dispatch(request, *args, **kwargs)
